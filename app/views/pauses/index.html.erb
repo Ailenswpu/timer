@@ -1,0 +1,29 @@
+<h1>Pauses for timer - <%= @timer.id %></h1>
+
+<div class='header'>
+  <%= link_to "Back", { controller: 'timers', action: 'history'} %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pauses.each do |pause| %>
+      <tr>
+        <td><%= pause.id %></td>
+        <td><%= to_display_time(pause.start_time) %></td>
+        <td><%= to_display_time(pause.end_time) %></td>
+        <td><%= seconds_to_timer_str(pause.duration) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div><%= paginate(@pauses) %></div>
+<div><%= page_entries_info(@pauses) %></div>

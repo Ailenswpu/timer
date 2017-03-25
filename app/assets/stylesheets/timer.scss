@@ -1,0 +1,55 @@
+// Place all the styles related to the timer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  padding-top: 25px;
+  font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+.timer-time {
+  font-size: 60px;
+  padding: 20px;
+}
+
+.button_to {
+  display: inline;
+  padding: 10px;
+}
+
+.btn-xl {
+  padding: 18px 28px;
+  font-size: 22px;
+  border-radius: 8px;
+}
+
+.footer {
+  padding-top: 50px;
+  font-size: 24px;
+}
+
+.footer .message {
+  padding-top: 30px;
+  font-size: 16px;
+  color: #444;
+}
+
+.header {
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+.fa-times {
+  color: #dd5555;
+}
+
+.fa-check {
+  color: #55dd55;
+}

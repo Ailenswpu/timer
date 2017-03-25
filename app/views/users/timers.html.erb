@@ -1,0 +1,43 @@
+<h1>Timer History</h1>
+
+<div class='header'>
+  <%= link_to "Index", { controller: 'timers', action: 'index'} %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Time</th>
+      <th>Desc</th>
+      <th>Pause</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @timers.each do |timer| %>
+      <tr>
+        <td><%= timer.id %></td>
+        <td><%= to_display_time(timer.start_time) %></td>
+        <td><%= to_display_time(timer.end_time) %></td>
+        <td><%= seconds_to_timer_str(timer.passed_seconds) %></td>
+        <td><%= timer.desc %></td>
+        <td>
+          <% if timer.pauses_count > 0 %>
+            <%= link_to timer.pauses_count, timer_pauses_path(timer) %>
+          <% else %>
+            <%= timer.pauses_count %>
+          <% end %>
+          </td>
+        <td>
+          <%= button_to 'Destroy', timer_path(timer), :method => :delete, :class => 'btn btn-xs btn-danger' %>
+        </td.
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div><%= paginate(@timers) %></div>
+<div><%= page_entries_info(@timers) %></div>
