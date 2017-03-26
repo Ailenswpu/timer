@@ -23,7 +23,7 @@ class Timer < ActiveRecord::Base
   class << self
     def current_timer(user)
       timer = Timer.where(user: user).order("id desc").first
-      if (timer.nil? || timer.status == Status::COMPLETED) && timer.desc.present?
+      if (timer.nil? || timer.status == Status::COMPLETED) && timer.try(:desc).present?
         Timer.new
       else
         timer
