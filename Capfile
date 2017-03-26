@@ -37,7 +37,7 @@ require 'capistrano/puma'
 # require 'capistrano/puma/monit'   # if you need the monit tasks
 # require 'capistrano/puma/nginx'   # if you want to upload a nginx site template
 # require 'capistrano/monit'
-# require 'capistrano/sidekiq'
+require 'capistrano/sidekiq'
 # require 'capistrano/sidekiq/monit'
 
 
