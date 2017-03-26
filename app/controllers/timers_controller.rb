@@ -8,7 +8,7 @@ class TimersController < ApplicationController
   def index
     @timer = Timer.current_timer(current_user)
     @stats = TimerStats.new
-    @show_desc = @timer.need_desc?
+    @show_desc = @timer.try(:need_desc?)
     @name = current_user.name
     @user_id = current_user.id
     # @notifier_status = NotifierStatus.create
