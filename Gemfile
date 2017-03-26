@@ -43,10 +43,10 @@ group :development, :test do
   gem "web-console", "~> 2.0"
 
   gem 'capistrano'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano3-monit', github: 'naps62/capistrano3-monit'
-  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
   gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 
 end
