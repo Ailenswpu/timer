@@ -1,7 +1,7 @@
 require "#{Rails.root}/app/validators/time_overwrap_validator"
 
 class Timer < ActiveRecord::Base
-  INITIAL_TIME = 10#25 * 60
+  INITIAL_TIME = 25 * 60
 
   belongs_to :user
 
