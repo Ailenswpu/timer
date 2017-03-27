@@ -61,7 +61,7 @@ updateTimerDisplay = (remainingSeconds) ->
 convertSecondsToTimer = (count) ->
   minutes = Math.floor(count / 60)
   seconds = count % 60
-  return addZeroPadding(minutes) + ":" + addZeroPadding(seconds)
+  return addZeroPadding(minutes) #+ ":" + addZeroPadding(seconds)
 
 addZeroPadding = (number) ->
   string = "00" + String(number);
