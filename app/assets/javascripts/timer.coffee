@@ -12,7 +12,9 @@ $ ->
       else
         clearInterval(countdownTimerId)
         # $('#time-control').hide()
+        notifyPomorodoDone()
         $('#done-desc').show()
+
 
       updateTimerDisplay(window.remainingSeconds)
 
@@ -61,7 +63,7 @@ updateTimerDisplay = (remainingSeconds) ->
 convertSecondsToTimer = (count) ->
   minutes = Math.floor(count / 60)
   seconds = count % 60
-  return addZeroPadding(minutes) #+ ":" + addZeroPadding(seconds)
+  return addZeroPadding(minutes) + ":" + addZeroPadding(seconds)
 
 addZeroPadding = (number) ->
   string = "00" + String(number);
@@ -76,3 +78,14 @@ descDone = ->
     url: "/timers/" + timerId
     success: (data, status, xhr) ->
       refreshScreen()
+notifyPomorodoDone = ->
+  if !('Notification' of window)
+    alert '不支持该浏览器!'
+  else if Notification.permission == 'granted'
+    notification = new Notification('一个番茄已经完成,请记录刚刚完成的工作,稍作休息继续!')
+  else if Notification.permission != 'denied'
+    Notification.requestPermission (permission) ->
+      if permission == 'granted'
+        notification = new Notification('一个番茄已经完成,请记录刚刚完成的工作,稍作休息继续!')
+      return
+  return
