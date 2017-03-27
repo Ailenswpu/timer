@@ -2,12 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  padding-top: 25px;
   font-family: 'Oswald', sans-serif;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 20px;
 }
 
 .timer-container {
@@ -15,8 +14,7 @@ h1 {
 }
 
 .timer-time {
-  font-size: 60px;
-  padding: 20px;
+  font-size: 20px;
 }
 
 .button_to {
@@ -25,14 +23,14 @@ h1 {
 }
 
 .btn-xl {
-  padding: 18px 28px;
+  padding: 9px 28px;
   font-size: 22px;
   border-radius: 8px;
 }
 
 .footer {
-  padding-top: 50px;
-  font-size: 24px;
+  padding-top: 10px;
+  font-size: 12px;
 }
 
 .footer .message {

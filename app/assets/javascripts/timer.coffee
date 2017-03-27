@@ -11,9 +11,8 @@ $ ->
         window.remainingSeconds -= 1
       else
         clearInterval(countdownTimerId)
-        # $('#time-control').hide()
         notifyPomorodoDone()
-        $('#done-desc').show()
+        $('#done-input').show()
 
 
       updateTimerDisplay(window.remainingSeconds)
@@ -24,12 +23,11 @@ $ ->
       window.lastFocus   = hasFocus()
       window.lastUpdated = currentTime()
     , 1000
-  $('#done-desc').hide() if window.remainingSeconds > 0
-  $("#done-desc").keyup (e) ->
-    if e.keyCode == 13
-      descDone()
+  $('#done-input').hide() if window.remainingSeconds > 0
+  $("#submit-desc").click ->
+    descDone()
   if window.showDesc == "true"
-    $('#done-desc').show()
+    $('#done-input').show()
     $('#time-control').hide()
 
 isFocusGained = ->
@@ -77,6 +75,7 @@ descDone = ->
     type: "PATCH"
     url: "/timers/" + timerId
     success: (data, status, xhr) ->
+      alert("提交成功")
       refreshScreen()
 notifyPomorodoDone = ->
   options = {

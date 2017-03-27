@@ -14,6 +14,7 @@
 	
   <div id="done-input" class="timer-time">
     <input type='text' id='done-desc' name='done-desc' placeholder='请输入完成的工作'>
+    <button class="btn btn-primary" id="submit-desc">提交</button>
   </div>
   <div id="time-control">
   <% if @timer.status == Timer::Status::INITIAL %>
