@@ -79,13 +79,18 @@ descDone = ->
     success: (data, status, xhr) ->
       refreshScreen()
 notifyPomorodoDone = ->
+  options = {
+      body: '一个番茄已经完成,请记录刚刚完成的工作,稍作休息继续!'
+    }
   if !('Notification' of window)
     alert '不支持该浏览器!'
   else if Notification.permission == 'granted'
-    notification = new Notification('一个番茄已经完成,请记录刚刚完成的工作,稍作休息继续!')
+    notification = new Notification('提示', options)
+    notification.sound
   else if Notification.permission != 'denied'
     Notification.requestPermission (permission) ->
       if permission == 'granted'
-        notification = new Notification('一个番茄已经完成,请记录刚刚完成的工作,稍作休息继续!')
+        notification = new Notification('提示', options)
+        notification.sound
       return
   return

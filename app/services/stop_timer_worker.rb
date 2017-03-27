@@ -15,8 +15,8 @@ class StopTimerWorker
   private
 
   def send_notification
-    count = TimerStats.new.completed_counts_on(Time.zone.today)
-    message = "#{count.ordinalize} timer of today completed."
-    Notifier.execute(message)
+    # count = TimerStats.new.completed_counts_on(Time.zone.today)
+    # message = "#{count.ordinalize} timer of today completed."
+    # Notifier.execute(message)
   end
 end
