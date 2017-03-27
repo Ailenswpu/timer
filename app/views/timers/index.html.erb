@@ -48,9 +48,9 @@
     </div>
 
     <div class="message">
-      <p><%= pluralize(@stats.completed_counts_on(Time.zone.today), "timer") %> completed today.</p>
-      <% if @stats.last_completed_timer %>
-        <p>Last timer completed <%= time_ago_in_words(@stats.last_completed_timer.end_time) %> ago.</p>
+      <p><%= pluralize(@stats.completed_counts_on(current_user, Time.zone.today), "timer") %> completed today.</p>
+      <% if @stats.last_completed_timer(current_user) %>
+        <p>Last timer completed <%= time_ago_in_words(@stats.last_completed_timer(current_user).end_time) %> ago.</p>
       <% end %>
     </div>
   </div>

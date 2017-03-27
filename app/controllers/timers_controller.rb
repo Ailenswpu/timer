@@ -54,7 +54,7 @@ class TimersController < ApplicationController
 
   def destroy
     timer.destroy!
-    redirect_to timers_history_path
+    redirect_to timers_user_path(id: current_user.id)
   end
 
   private
