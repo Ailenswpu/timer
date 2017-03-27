@@ -26,6 +26,6 @@ module MonoTimer
     config.autoload_paths += %W(#{config.root}/app/validators/)
     config.autoload_paths += %W(#{config.root}/lib)
 
-    config.time_zone = 'Tokyo'
+    config.time_zone = 'Beijing'
   end
 end
