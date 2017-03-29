@@ -44,7 +44,7 @@
 
   <div class="footer">
     <div class="message">
-      <%= @stats.completed_counts_on(current_user, Time.zone.today) %> | 
+      <%= @stats.completed_counts_on(current_user, Time.zone.today) + 1 %>th | 
       <span id="timer-time" class="timer-time">
         <%= seconds_to_timer_str(@timer.remaining_seconds) %>
       </span>
