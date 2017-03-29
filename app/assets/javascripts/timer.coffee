@@ -12,10 +12,9 @@ $ ->
       else
         clearInterval(countdownTimerId)
         notifyPomorodoDone()
-        $('#done-input').show()
+        $("#timer-button").html('<button class="btn btn-primary btn-xl" id="submit-desc" onclick="descDone()">提交</button>')
 
-
-      updateTimerDisplay(window.remainingSeconds)
+      updateTimerDisplay(window.remainingSeconds) if window.remainingSeconds % 10 == 0
 
       if isFocusGained() == true || isResumed() == true
         synchronizeTimer()
@@ -23,12 +22,6 @@ $ ->
       window.lastFocus   = hasFocus()
       window.lastUpdated = currentTime()
     , 1000
-  $('#done-input').hide() if window.remainingSeconds > 0
-  $("#submit-desc").click ->
-    descDone()
-  if window.showDesc == "true"
-    $('#done-input').show()
-    $('#time-control').hide()
 
 isFocusGained = ->
   hasFocus() == true && window.lastFocus == false
@@ -61,13 +54,13 @@ updateTimerDisplay = (remainingSeconds) ->
 convertSecondsToTimer = (count) ->
   minutes = Math.floor(count / 60)
   seconds = count % 60
-  return addZeroPadding(minutes) #+ ":" + addZeroPadding(seconds)
+  return addZeroPadding(minutes) + ":" + addZeroPadding(seconds)
 
 addZeroPadding = (number) ->
   string = "00" + String(number);
   return string.substr(string.length - 2);
 
-descDone = ->
+window.descDone = ->
   $.ajax
     async: true
     dataType: 'json'

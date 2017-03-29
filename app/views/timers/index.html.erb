@@ -7,16 +7,10 @@
   <% end %>
 
   <h1>[<%= @name%>]Self Work Timer</h1>
-
-  <div id="timer-time" class="timer-time">
-    <%= seconds_to_timer_str(@timer.remaining_seconds) %>
-  </div>
 	
-  <div id="done-input" class="timer-time">
-    <input type='text' id='done-desc' name='done-desc' placeholder='请输入完成的工作'>
-    <button class="btn btn-primary" id="submit-desc">提交</button>
-  </div>
   <div id="time-control">
+  <input type='text' id='done-desc' name='done-desc' placeholder='请输入完成的工作' class="done-desc">
+  <span id="timer-button">
   <% if @timer.status == Timer::Status::INITIAL %>
     <%= button_to "Start",
       { controller: "timers", action: "create" },
@@ -38,21 +32,22 @@
           { controller: "timers", action: "pause", id: @timer.id},
             method: :post, class: "btn btn-info btn-xl" %>
       <% end %>
+
+      <% if @timer.status == Timer::Status::COMPLETED %>
+        <button class="btn btn-primary btn-xl" id="submit-desc" onclick="descDone()">提交</button>
+      <% end %>
+
     <% end %>
   <% end %>
+  </span>
   </div>
 
   <div class="footer">
-    <div class="btn-group" role="group">
-      <%= link_to "History", timers_user_path(id: @user_id), class: "btn btn-default" %>
-      <%= link_to "Monitoring", sidekiq_web_path, class: "btn btn-default" %>
-    </div>
-
     <div class="message">
-      <p><%= pluralize(@stats.completed_counts_on(current_user, Time.zone.today), "timer") %> completed today.</p>
-      <% if @stats.last_completed_timer(current_user) %>
-        <p>Last timer completed <%= time_ago_in_words(@stats.last_completed_timer(current_user).end_time) %> ago.</p>
-      <% end %>
+      <%= @stats.completed_counts_on(current_user, Time.zone.today) %> | 
+      <span id="timer-time" class="timer-time">
+        <%= seconds_to_timer_str(@timer.remaining_seconds) %>
+      </span>
     </div>
   </div>
 
