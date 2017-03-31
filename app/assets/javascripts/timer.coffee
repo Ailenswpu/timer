@@ -68,7 +68,6 @@ window.descDone = ->
     type: "PATCH"
     url: "/timers/" + timerId
     success: (data, status, xhr) ->
-      alert("提交成功")
       refreshScreen()
 notifyPomorodoDone = ->
   options = {
